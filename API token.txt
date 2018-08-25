@@ -1,0 +1,19 @@
+0eb6c472f378c27a48640fb305ad47f40c6984c2
+
+
+
+import requests
+my_domain = 'SIBIFLY.pythonanywhere.com'
+username = 'SIBIFLY'
+token = '0eb6c472f378c27a48640fb305ad47f40c6984c2'
+
+response = requests.post(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain}/reload/'.format(
+        username=username, domain=my_domain
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+    print('All OK')
+else:
+    print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
